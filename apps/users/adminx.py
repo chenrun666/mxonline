@@ -9,6 +9,12 @@ class BaseSetting:
     use_bootswatch = True
 
 
+class GlobalSettings:
+    site_title = "天使元后台管理系统"
+    site_footer = "天使元科技有限责任公司"
+    menu_style = "accordion"
+
+
 class EmailVerifyRecordAdmin:
     list_display = ["code", "email", "send_type", "send_time"]  # 展示列
     search_fields = ["code", "email", "send_type"]  # 搜索字段
@@ -24,3 +30,4 @@ class BannerAdmin:
 xadmin.site.register(EmailVerifyRecord, EmailVerifyRecordAdmin)
 xadmin.site.register(Banner, BannerAdmin)
 xadmin.site.register(views.BaseAdminView, BaseSetting)  # 使用主题功能
+xadmin.site.register(views.CommAdminView, GlobalSettings)

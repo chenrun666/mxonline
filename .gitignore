@@ -9,3 +9,5 @@ dist/
 *log
 
 __pycache__/
+
+/static/
