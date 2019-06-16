@@ -66,7 +66,7 @@ class UserMessage(models.Model):
 class UserCourse(models.Model):
     user = models.ForeignKey(User, verbose_name="用户", on_delete=models.DO_NOTHING)
     course = models.ForeignKey(Course, verbose_name="课程", on_delete=models.DO_NOTHING)
-    add_tiem = models.DateTimeField(default=datetime.now, verbose_name="开始学习时间")
+    add_time = models.DateTimeField(default=datetime.now, verbose_name="开始学习时间")
 
     class Meta:
         verbose_name = "学习课程"
