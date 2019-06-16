@@ -2,6 +2,8 @@ from datetime import datetime
 
 from django.db import models
 
+from DjangoUeditor.models import UEditorField
+
 
 # Create your models here.
 class CityDict(models.Model):
@@ -15,8 +17,14 @@ class CityDict(models.Model):
 
 
 class CourseOrg(models.Model):
+    """
+    课程机构
+    """
     name = models.CharField(max_length=50, verbose_name="机构名称")
-    desc = models.TextField(verbose_name="机构描述")
+    desc = UEditorField(verbose_name="机构描述", blank=True, null=True)
+    location = models.CharField(max_length=50, verbose_name="通讯详细地址")
+    has_auth = models.BooleanField(default=False, verbose_name="是否已经认证")
+    index = models.IntegerField(default=9999, verbose_name="排序")
     click_nums = models.IntegerField(default=0, verbose_name="点击数")
     fav_nums = models.IntegerField(default=0, verbose_name="收藏数")
     image = models.ImageField(upload_to="org/%Y/%m", verbose_name="机构封面图")
@@ -31,7 +39,7 @@ class CourseOrg(models.Model):
 
 
 class Teacher(models.Model):
-    name = models.CharField(max_length="20", verbose_name="教师名字")
+    name = models.CharField(max_length=20, verbose_name="教师名字")
     work_years = models.IntegerField(default=0, verbose_name="工作年限")
     work_company = models.CharField(max_length=50, verbose_name="公司名称")
     work_position = models.CharField(max_length=50, verbose_name="公司职位")
